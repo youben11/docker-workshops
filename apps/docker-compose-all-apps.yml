@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+        xpathinj:
+                build: ./xpath
+                image: xpathinj:latest
+                ports:
+                        - "9000:8000"
+                networks:
+                        xpathinj:
+                deploy:
+                        mode: replicated
+                        replicas: 2
+                        restart_policy:
+                                condition: on-failure
+
+        hackerspaces:
+                build: ./hackerspaces
+                image: hackerspaces:latest
+                ports:
+                        - "9002:80"
+                depends_on:
+                        - mariadb
+                networks:
+                        hackerspaces:
+                deploy:
+                        mode: replicated
+                        replicas: 2
+                        restart_policy:
+                                condition: on-failure
+
+        easy_log:
+                build: ./easy_log
+                image: easy_log:latest
+                ports:
+                        - "9004:80"
+                networks:
+                        easy_log:
+                deploy:
+                        mode: replicated
+                        replicas: 2
+                        restart_policy:
+                                condition: on-failure
+
+
+        mariadb:
+                image: db-web-dts
+                build: ./db-web
+                environment:
+                        - MYSQL_ROOT_PASSWORD=blackxor
+                networks:
+                        hackerspaces:
+
+networks:
+        xpathinj:
+        hackerspaces:
+        easy_log:

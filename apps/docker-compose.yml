@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+        hackerspaces:
+                build: ./hackerspaces
+                image: hackerspaces:latest
+                ports:
+                        - "80:80"
+                depends_on:
+                        - mariadb
+                networks:
+                        hackerspaces:
+
+        mariadb:
+                image: db-web-dts
+                build: ./db-web
+                environment:
+                        - MYSQL_ROOT_PASSWORD=blackxor
+                networks:
+                        hackerspaces:
+
+networks:
+        hackerspaces:
