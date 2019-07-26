@@ -18,8 +18,12 @@ When using databases for web apps, we often need to do some initialization like 
 
 #### nodejs
 
+This is an [awesome tutorial](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/) made by Nodejs on how to dockerize a Nodejs web app.
+
 
 #### xpath-injection
+
+It's a Django web application that was developed during INGEHACK CTF 2018 as a cyber-security challenge. It's a good start to learn how to dockerzie Django apps since you will not need to link it with any other service like a database, it uses a local sqlite db.
 
 
 ## Working with docker-compose
