@@ -1,23 +1,27 @@
 version: '3'
 
 services:
-        hackerspaces:
-                build: ./hackerspaces
-                image: hackerspaces:latest
-                ports:
-                        - "80:80"
-                depends_on:
-                        - mariadb
-                networks:
-                        hackerspaces:
+  # The services that docker-compose should take care of
 
-        mariadb:
-                image: db-web-dts
-                build: ./db-web
-                environment:
-                        - MYSQL_ROOT_PASSWORD=blackxor
-                networks:
-                        hackerspaces:
+  hackerspaces: # The name of the service
+    # The image to be used for this service
+    image: hackerspaces
+    # The build directory used to build the image
+    # if it's not found or explicitly told to
+    build: ./hackerspaces
+    # ports to be published on the host
+    # (port_in_host:port_in_container)
+    ports:
+            - "80:80"
+    # Since this service depends on mariadb
+    # mariadb will be started first
+    depends_on:
+            - mariadb
 
-networks:
-        hackerspaces:
+  mariadb:
+    image: db
+    build: ./mariadb
+    # Environment variable to be set on startup, the mariadb
+    # image needs this one to setup the root password
+    environment:
+            - MYSQL_ROOT_PASSWORD=blackxor

@@ -28,7 +28,12 @@ It's a Django web application that was developed during INGEHACK CTF 2018 as a c
 
 ## Working with docker-compose
 
-#### Running hackerspaces and its db using docker-compose
+You don't need to run your containers one by one and manage them, docker-compose can do that for you.
 
+#### [Running hackerspaces and its db using docker-compose](./DockerComposeWebApp.md)
 
-#### Running all the apps using docker-compose
+Here we will start the hackerspaces web app along with its db using docker-compose.
+
+#### [Running all the apps using docker-compose](./DockerComposeWebApp.md)
+
+Here we will start all the app dockerized so far using docker-compose.
