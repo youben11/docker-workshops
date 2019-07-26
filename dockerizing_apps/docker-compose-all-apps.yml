@@ -1,57 +1,55 @@
 version: '3'
 
 services:
-        xpathinj:
-                build: ./xpath
-                image: xpathinj:latest
-                ports:
-                        - "9000:8000"
-                networks:
-                        xpathinj:
-                deploy:
-                        mode: replicated
-                        replicas: 2
-                        restart_policy:
-                                condition: on-failure
+  # The services that docker-compose should take care of
+  xpathinj: # The name of the service
+    # The image to be used for this service
+    image: xpath-injection
+    # The build directory used to build the image
+    # if it's not found or explicitly told to
+    build: ./xpath-injection
+    # ports to be published on the host
+    # (port_in_host:port_in_container)
+    ports:
+      - "9000:8000"
+    # Networks are used to isolate containers.
+    # Putting two containers inside the same network
+    # mean they communicate, otherwise they can't
+    networks:
+      xpathinj:
 
-        hackerspaces:
-                build: ./hackerspaces
-                image: hackerspaces:latest
-                ports:
-                        - "9002:80"
-                depends_on:
-                        - mariadb
-                networks:
-                        hackerspaces:
-                deploy:
-                        mode: replicated
-                        replicas: 2
-                        restart_policy:
-                                condition: on-failure
+  hackerspaces:
+    image: hackerspaces
+    build: ./hackerspaces
+    ports:
+      - "9002:80"
+    # Since this service depends on mariadb
+    # mariadb will be started first
+    depends_on:
+      - mariadb
+    networks:
+      hackerspaces:
 
-        easy_log:
-                build: ./easy_log
-                image: easy_log:latest
-                ports:
-                        - "9004:80"
-                networks:
-                        easy_log:
-                deploy:
-                        mode: replicated
-                        replicas: 2
-                        restart_policy:
-                                condition: on-failure
+  easy_log:
+    image: easy_log
+    build: ./easy_log
+    ports:
+      - "9004:80"
+    networks:
+      easy_log:
 
+  mariadb:
+    image: db
+    build: ./mariadb
+    # Environment variable to be set on startup, the mariadb
+    # image needs this one to setup the root password
+    environment:
+      - MYSQL_ROOT_PASSWORD=blackxor
+    networks:
+      hackerspaces:
 
-        mariadb:
-                image: db-web-dts
-                build: ./db-web
-                environment:
-                        - MYSQL_ROOT_PASSWORD=blackxor
-                networks:
-                        hackerspaces:
-
+# The list of networks used by those services
 networks:
-        xpathinj:
-        hackerspaces:
-        easy_log:
+  xpathinj:
+  hackerspaces:
+  easy_log:

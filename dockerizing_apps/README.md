@@ -34,6 +34,6 @@ You don't need to run your containers one by one and manage them, docker-compose
 
 Here we will start the hackerspaces web app along with its db using docker-compose.
 
-#### [Running all the apps using docker-compose](./DockerComposeWebApp.md)
+#### [Running all the apps using docker-compose](./DockerComposeAllApp.md)
 
 Here we will start all the app dockerized so far using docker-compose.
