@@ -10,6 +10,7 @@ It's a static php web application that was developed during INGEHACK CTF 2018 as
 
 #### hackerspaces
 
+It's a dynamic php web application that was developed during INGEHACK CTF 2018 as a cyber-security challenge. You will learn how to dockerize php apps that uses a database.
 
 #### mariadb
 
