@@ -44,10 +44,10 @@ Now we need to built the image
 $ docker image build --tag mydb .
 ```
 
-Let's now run it
+Let's now run it, notice that we specified the root password here, the container will exits if this variable isn't provided.
 
 ```bash
-$ docker container run --detach mydb
+$ docker container run --detach --env MYSQL_ROOT_PASSWORD=mypass mydb
 ```
 
 Checking if it's running
