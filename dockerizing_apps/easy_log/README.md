@@ -37,13 +37,13 @@ COPY ./app/ /var/www/html/
 Now you need to build the image
 
 ```bash
-$ docker image build -t easylog .
+$ docker image build --tag easylog .
 ```
 
 You now have a ready to use web app that you can run anywhere! Let's run it
 
 ```bash
-$ docker container run -d -p 80:80 easylog
+$ docker container run --detach --publish 80:80 easylog
 ```
 
 Checking if it's working
@@ -51,3 +51,5 @@ Checking if it's working
 ```bash
 $ curl -4 http://localhost
 ```
+
+You have learned how to dockerize simple php apps, you can try with a more complex app that uses a database [here](../hackerspaces)
