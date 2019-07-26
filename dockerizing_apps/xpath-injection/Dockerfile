@@ -1,6 +1,6 @@
 FROM python:3.6-alpine
 
-ENV app_dir_name xpath
+ENV app_dir_name app
 ENV app_path /opt/$app_dir_name
 
 RUN apk update
