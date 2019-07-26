@@ -20,7 +20,7 @@ $ cd docker-workshops/dockerizing_apps/easy_log
 
 ## Dockerizing
 
-The first step you wanna do to dockerize your app is to find a base image that fits your need, then customize it (e.g installing some more deps or copying your source code). In our case we searched on the [Docker Hub](https://hub.docker.com/) and found an official image for [php](https://hub.docker.com/_/php), more precisely the one tagged with 7.0-apache as it contains the httpd web server that we need to server the app. Now we don't need to install any more deps for our app but we still need to copy the source code into the image, how to do that?
+The first step you wanna do to dockerize your app is to find a base image that fits your need, then customize it (e.g installing some more deps or copying your source code). In our case we searched on the [Docker Hub](https://hub.docker.com/) and found an official image for [php](https://hub.docker.com/_/php), more precisely the one tagged with 7.0-apache as it contains the httpd web server that we need to serve the app. Now we don't need to install any more deps for our app but we still need to copy the source code into the image, how to do that?
 
 The answer is image specific as every image documents where to put your code, in the case of the php:x.x-apache image, we need to put it under /var/www/html, now we can start writing our Dockerfile
 
