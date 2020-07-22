@@ -56,4 +56,4 @@ Checking if it's running
 $ docker container ls
 ```
 
-You learned how to create your own db image with init scripts, you can now jump to use this db with its [associated web app](../hackerspaces), learn how to deploy them together [here](#).
+You learned how to create your own db image with init scripts, you can now jump to use this db with its [associated web app](../hackerspaces), learn how to deploy them together [here](../DockerComposeWebApp.md).
